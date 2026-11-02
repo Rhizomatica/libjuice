@@ -1,0 +1,11 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+%:
+	dh $@ --buildsystem=cmake
+
+# Upstream also ships a plain Makefile; CMake is the build that installs.
+# Upstream's tests reach public STUN servers, which a package build cannot.
+override_dh_auto_configure:
+	dh_auto_configure -- -DNO_TESTS=ON

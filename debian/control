@@ -1,0 +1,35 @@
+Source: libjuice
+Section: libs
+Priority: optional
+Maintainer: Rafael Diniz <rafael@riseup.net>
+Rules-Requires-Root: no
+Build-Depends:
+ debhelper-compat (= 13),
+ cmake (>= 3.10),
+Standards-Version: 4.7.2
+Homepage: https://github.com/paullouisageneau/libjuice
+Vcs-Browser: https://github.com/Rhizomatica/libjuice
+Vcs-Git: https://github.com/Rhizomatica/libjuice.git
+
+Package: libjuice-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends:
+ libjuice1 (= ${binary:Version}),
+ ${misc:Depends},
+Description: UDP Interactive Connectivity Establishment library (development files)
+ libjuice opens bidirectional UDP streams through NAT traversal with ICE
+ (RFC 8445), as WebRTC does. It is the ICE backend of libdatachannel.
+ .
+ This package contains the headers and the CMake package configuration.
+
+Package: libjuice1
+Architecture: any
+Multi-Arch: same
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+Description: UDP Interactive Connectivity Establishment library
+ libjuice opens bidirectional UDP streams through NAT traversal with ICE
+ (RFC 8445), as WebRTC does. It is the ICE backend of libdatachannel.
